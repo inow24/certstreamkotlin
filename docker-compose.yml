@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  certstream:
+    build: .
+    ports:
+      - "9000:9000"  # HTTP API
+      - "9001:9001"  # WebSocket lite stream
+      - "9002:9002"  # WebSocket full stream
+      - "9003:9003"  # WebSocket domains-only stream
+    restart: unless-stopped
+    environment:
+      - JAVA_OPTS=-Xmx2g -Xms512m
+    volumes:
+      - ./logs:/app/logs
