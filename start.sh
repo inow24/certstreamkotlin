@@ -3,11 +3,11 @@
 # Build and run the CertStream Kotlin server
 
 echo "Building CertStream Kotlin..."
-gradle build
+mvn clean compile
 
 if [ $? -eq 0 ]; then
     echo "Build successful! Starting server..."
-    gradle run
+    mvn exec:java
 else
     echo "Build failed!"
     exit 1

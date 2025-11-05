@@ -4,9 +4,9 @@
 
 ### Running Locally
 
-1. **Build and run with Gradle:**
+1. **Build and run with Maven:**
    ```bash
-   gradle run
+   mvn exec:java
    ```
 
 2. **Or use the start script:**
@@ -16,8 +16,8 @@
 
 3. **Build a fat JAR and run:**
    ```bash
-   gradle fatJar
-   java -jar build/libs/certstream-kotlin-1.0.0-all.jar
+   mvn clean package
+   java -jar target/certstream-kotlin-1.0.0-all.jar
    ```
 
 ### Running with Docker
@@ -256,17 +256,17 @@ ulimit -n 65536
 
 ### Building
 ```bash
-gradle build
+mvn clean compile
 ```
 
 ### Running Tests
 ```bash
-gradle test
+mvn test
 ```
 
 ### Creating Fat JAR
 ```bash
-gradle fatJar
+mvn clean package
 ```
 
 ### Code Style

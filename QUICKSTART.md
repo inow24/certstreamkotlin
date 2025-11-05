@@ -17,13 +17,13 @@ This is a complete Kotlin implementation of a Certificate Transparency (CT) log 
 ### 1. Build the Project
 
 ```bash
-gradle build
+mvn clean compile
 ```
 
 ### 2. Run the Server
 
 ```bash
-gradle run
+mvn exec:java
 ```
 
 ### 3. Test the Endpoints
@@ -150,16 +150,16 @@ certstream-kotlin/
 
 ```bash
 # Build the project
-gradle build
+mvn clean compile
 
 # Run the server
-gradle run
+mvn exec:java
 
 # Create fat JAR
-gradle fatJar
+mvn clean package
 
 # Run the fat JAR
-java -jar build/libs/certstream-kotlin-1.0.0-all.jar
+java -jar target/certstream-kotlin-1.0.0-all.jar
 
 # Run with Docker
 docker-compose up

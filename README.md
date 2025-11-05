@@ -23,25 +23,25 @@ A Kotlin implementation of a Certificate Transparency log aggregator and streami
 ## Requirements
 
 - Java 17 or higher
-- Gradle 7.x or higher
+- Maven 3.8 or higher
 
 ## Building
 
 ```bash
-./gradlew build
+mvn clean compile
 ```
 
 ## Running
 
 ```bash
-./gradlew run
+mvn exec:java
 ```
 
 Or build and run the JAR:
 
 ```bash
-gradle fatJar
-java -jar build/libs/certstream-kotlin-1.0.0-all.jar
+mvn clean package
+java -jar target/certstream-kotlin-1.0.0-all.jar
 ```
 
 ## Configuration

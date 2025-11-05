@@ -1,26 +1,25 @@
-FROM gradle:8.5-jdk17 AS build
+FROM maven:3.9-eclipse-temurin-17 AS build
 
 WORKDIR /app
 
-# Copy gradle files
-COPY build.gradle.kts settings.gradle.kts ./
-COPY gradle gradle
+# Copy pom.xml
+COPY pom.xml ./
 
 # Download dependencies
-RUN gradle dependencies --no-daemon
+RUN mvn dependency:go-offline
 
 # Copy source code
 COPY src src
 
 # Build the application
-RUN gradle shadowJar --no-daemon
+RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:17-jre-alpine
 
 WORKDIR /app
 
 # Copy the built JAR from build stage
-COPY --from=build /app/build/libs/certstream-kotlin-1.0.0-all.jar app.jar
+COPY --from=build /app/target/certstream-kotlin-1.0.0-all.jar app.jar
 
 # Expose ports
 # HTTP server

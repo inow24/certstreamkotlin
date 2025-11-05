@@ -103,6 +103,10 @@ This is a complete Kotlin implementation of the custom CertStream server, matchi
 - **cryptography** → Java Crypto API
 - **python-dateutil** → Java Time API
 
+### Build System
+- **Python**: pip + requirements.txt
+- **Kotlin**: Maven + pom.xml
+
 ## Features Implemented
 
 ✅ Multiple CT log monitoring  
@@ -127,20 +131,20 @@ This is a complete Kotlin implementation of the custom CertStream server, matchi
 3. **Coroutines**: More structured concurrency than asyncio
 4. **Certificate Parsing**: Uses Java's built-in crypto instead of Bouncy Castle for most operations
 5. **WebSocket Implementation**: Ktor provides integrated HTTP/WS server
-6. **Build System**: Gradle instead of pip/requirements.txt
+6. **Build System**: Maven instead of pip/requirements.txt
 7. **Deployment**: Fat JAR with all dependencies included
 
 ## Running the Application
 
 ### Development
 ```bash
-./gradlew run
+mvn exec:java
 ```
 
 ### Production (Fat JAR)
 ```bash
-./gradlew shadowJar
-java -jar build/libs/certstream-kotlin-1.0.0-all.jar
+mvn clean package
+java -jar target/certstream-kotlin-1.0.0-all.jar
 ```
 
 ### Docker
